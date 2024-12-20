@@ -54,8 +54,7 @@ const FeaturedPosts = () => {
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque.
             </Link>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem recusandae eos ipsum cum iusto quasi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quidem, voluptatem iusto vel labore enim?</p>
-          </div>
+         </div>
         </div>
 
         {/* third */}
@@ -82,8 +81,7 @@ const FeaturedPosts = () => {
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </Link>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. At numquam facilis inventore natus quasi, consectetur doloremque quisquam repellendus officia vel pariatur minima provident reprehenderit praesentium, corrupti, ab voluptas aspernatur voluptatem.
-          </div>
+       </div>
         </div>
 
         {/* fourth */}
@@ -110,8 +108,7 @@ const FeaturedPosts = () => {
             >
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.
             </Link>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor hic sequi porro voluptatibus, ad minima illo fuga aliquid quia corporis in veniam animi, quasi delectus iure, at similique doloribus doloremque?
-          </div>
+         </div>
         </div>
       </div>
     </div>

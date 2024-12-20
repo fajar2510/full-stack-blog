@@ -3,17 +3,20 @@ import connectDB from "./lib/connectDB.js";
 import userRouter from "./routes/user.route.js";
 import postRouter from "./routes/post.route.js";
 import commentRouter from "./routes/comment.route.js";
+import webHookRouter from "./routes/webhook.route.js"
 
 const app = express();
+
+app.use("/webhooks", webHookRouter)
 app.use(express.json())
 
 // app.get("/test", (req, res) => {
 //   res.status(200).send("it's works!!");
 // });
 
-// app.use("/users", userRouter);
+app.use("/users", userRouter);
 app.use("/posts", postRouter);
-// app.use("/comments", commentRouter);
+app.use("/comments", commentRouter);
 
 app.use((error, req, res, next) => {
   res.status(error.status || 500)
