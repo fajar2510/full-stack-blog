@@ -4,14 +4,44 @@ import userRouter from "./routes/user.route.js";
 import postRouter from "./routes/post.route.js";
 import commentRouter from "./routes/comment.route.js";
 import webHookRouter from "./routes/webhook.route.js"
+import { clerkMiddleware, requireAuth } from "@clerk/express";
+import cors from "cors";
 
 const app = express();
 
+app.use(cors(process.env.CLIENT_URL))
+app.use(clerkMiddleware())
 app.use("/webhooks", webHookRouter)
 app.use(express.json())
 
-// app.get("/test", (req, res) => {
-//   res.status(200).send("it's works!!");
+// app.get("/test",(req,res)=>{
+//   res.status(200).send("it works!")
+// })
+
+app.get("/auth-state", (req, res) => {
+  const authState = req.auth;
+  res.json(authState);
+});
+
+app.get("/protected", requireAuth(), (req, res) => {
+  const { userId } = req.auth;
+  res.status(200).json({ message: "Hello, authenticated user!", userId });
+});
+
+app.get("/protected2", (req, res) => {
+  res.status(200).json(req.auth || "No auth found");
+});
+
+// app.get("/protect", (req, res) => {
+//   const {userId} = req.auth;
+//   if(!userId){
+//     return res.status(401).json("not authenticated")
+//   }
+//   res.status(200).json("content")
+// });
+
+// app.get("/protect2", requireAuth(), (req, res) => {
+//   res.status(200).json("content")
 // });
 
 app.use("/users", userRouter);
