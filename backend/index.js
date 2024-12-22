@@ -23,14 +23,14 @@ app.get("/auth-state", (req, res) => {
   res.json(authState);
 });
 
-app.get("/protected", requireAuth(), (req, res) => {
-  const { userId } = req.auth;
-  res.status(200).json({ message: "Hello, authenticated user!", userId });
-});
+// app.get("/protected", requireAuth(), (req, res) => {
+//   const { userId } = req.auth;
+//   res.status(200).json({ message: "Hello, authenticated user!", userId });
+// });
 
-app.get("/protected2", (req, res) => {
-  res.status(200).json(req.auth || "No auth found");
-});
+// app.get("/protected2", (req, res) => {
+//   res.status(200).json(req.auth || "No auth found");
+// });
 
 // app.get("/protect", (req, res) => {
 //   const {userId} = req.auth;
