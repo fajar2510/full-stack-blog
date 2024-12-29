@@ -14,14 +14,23 @@ app.use(clerkMiddleware())
 app.use("/webhooks", webHookRouter)
 app.use(express.json())
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 // app.get("/test",(req,res)=>{
 //   res.status(200).send("it works!")
 // })
 
-app.get("/auth-state", (req, res) => {
-  const authState = req.auth;
-  res.json(authState);
-});
+// app.get("/auth-state", (req, res) => {
+//   const authState = req.auth;
+//   res.json(authState);
+// });
 
 // app.get("/protected", requireAuth(), (req, res) => {
 //   const { userId } = req.auth;
@@ -60,5 +69,5 @@ app.use((error, req, res, next) => {
 
 app.listen(3000, () => {
   connectDB();
-  console.log("Server is running on port 3000!");
+  console.log("Server is running!");
 });

@@ -3,19 +3,21 @@ import {
     getPosts, 
     getPost, 
     createPost, 
-    deletePost 
+    deletePost,
+    uploadAuth,
+    featurePost
 } from "../controllers/post.controller.js";
+import increaseVisit from "../middlewares/increaseVisit.js";
+
 
 const router = express.Router();
 
-// router.get("/upload-auth", uploadAuth);
+router.get("/upload-auth", uploadAuth);
+router.get("/", getPosts);
+router.get("/:slug", increaseVisit, getPost);
+router.post("/", createPost);
+router.delete("/:id", deletePost);
+router.patch("/feature", featurePost);
 
-router.get("/", getPosts); // get all post
-// router.get("/:slug", increaseVisit, getPost);
-router.get("/:slug", getPost); // get single post
-router.post("/", createPost); // post single post
-router.delete("/:id", deletePost); // delete single post
-
-// router.patch("/feature", featurePost);
 
 export default router;
